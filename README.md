@@ -39,7 +39,7 @@ and COCO segmentation.
 
 ## IEEE Transactions on Pattern Analysis and Machine Intelligence
 
-1. [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](https://scholar.google.co.in/scholar?oi=bibs&cluster=16436232259506318906&btnI=1&hl=en)<img src="https://img.shields.io/badge/Scheduled-Not%20Fixed-red">
+1. [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](https://scholar.google.co.in/scholar?oi=bibs&cluster=16436232259506318906&btnI=1&hl=en)<img src="https://img.shields.io/badge/Completed-Read%20on%2017--AUG--2020-green">
 
 **Brief :** This paper proposes a new architectural change in SOTA object detection algorithms. They introduce *Region Proposal Network (RPN)* that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. Object detection networks depend on region proposal algorithms to hypothesize object locations. This RPN is a convolutional network that simultaneously predicts objects bounds and scores. Before this paper, regions proposal methods to rely on Selective Search (SS) and other inefficient methods. 
 ![Different schemes for addressing multiple scales and sizes](/fasterrcnn/pyramid.png). RPNs can predict anchors with different scales and aspect ratios. R-CNN is used mainly to classify the region proposals into object categories and background. Fast R-CNN enables end-to-end detector training on shared convolutional features and
