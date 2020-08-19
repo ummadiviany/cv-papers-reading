@@ -3,30 +3,34 @@ This is a schedule and brief info about papers I read.
 
 
 - [x] [ImageNet Classification with Deep Convolutional Neural Networks](#alexnet)
-- [x] [Deep Residual Learning for Image Recognition](#resnet) 
 
-- [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
 - [ ] [Visualizing and Understanding Convolutional Networks]()
 
-- [ ] [Fully convolutional networks for semantic segmentation]()
+- [ ] [Very Deep Convolutional Networks for Large-Scale Image Recognition]()
 
-- [ ] [Semantic image segmentation with deep convolutional nets and fully connected crfs ]()
+- [ ] [Going deeper with convolutions]()
+
+- [x] [Deep Residual Learning for Image Recognition](#resnet) 
 
 - [ ] [ Rich feature hierarchies for accurate object detection and semantic segmentation]()
+
+- [ ] [Fast r-cnn]()
+
+- [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
 
 - [ ] [ You only look once: Unified, real-time object detection]()
 
 - [ ] [ SSD: Single Shot MultiBox Detector]()
 
-- [ ] [ Mask R-CNN]()
+- [ ] [Fully convolutional networks for semantic segmentation]()
 
-- [ ] [Fast r-cnn]()
+- [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs ]()
+
+- [ ] [ Mask R-CNN]()s
 
 - [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
 
-- [ ] [Very Deep Convolutional Networks for Large-Scale Image Recognition]()
 
-- [ ] [Going deeper with convolutions]()
 
 
 <div id='alexnet'/>
