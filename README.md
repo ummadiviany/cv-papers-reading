@@ -14,7 +14,7 @@ This is a schedule and brief info about papers I read.
 
 - [ ] [ Rich feature hierarchies for accurate object detection and semantic segmentation]()
 
-- [ ] [Fast r-cnn]()
+- [ ] [Fast R-CNN]()
 
 - [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
 
@@ -26,7 +26,7 @@ This is a schedule and brief info about papers I read.
 
 - [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs ]()
 
-- [ ] [ Mask R-CNN]()s
+- [ ] [ Mask R-CNN]()
 
 - [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
 
