@@ -105,6 +105,6 @@ shows compelling accuracy and speed. ![Faster R-CNN is a single, unified network
 
 ## Author
 
-|<a href ="https://github.com/ummadiviany"><img height="64" width="64" src="profile.jpeg" /></a>                                          |
+|<a href ="https://github.com/ummadiviany"><img height="128" width="128" src="profile.jpeg" /></a>                                          |
 | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [VINAY UMMADI](https://github.com/ummadiviany)                                                                                                     |
