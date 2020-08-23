@@ -1,7 +1,6 @@
 # cv-papers-reading
-This is a schedule and brief info about papers I read.
-
-
+This repository holds the Brief of cv-papers I read. If you want to have a glimpse of the paper, then you can continue reading this readme. I highly recommend reading papers yourself and get a more in-depth understanding. Click on the title of the paper to go to the paper link. All the papers have been uploaded in their respective folders.
+ 
 - [x] [ImageNet Classification with Deep Convolutional Neural Networks](#alexnet)
 
 - [x] [Visualizing and Understanding Convolutional Networks](#zfnet)
