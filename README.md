@@ -65,6 +65,7 @@ This architecture beating *AlexNet(single model)* by 1.7%(top-5 error), * best-p
 
 **Brief:** This is the paper that showed depth is very crucial for performance. However, in the previous papers itself, they said increasing the depth will show better performance. Lack of powerful GPUs held increasing depth. Using tiny filters, we can achieve better performance than large filters used in previous papers. A 5*x*5 kernel has the same receptive field as two stacked 3*x*3 filter, and a  7*x*7 kernel has the same receptive field as three stacked 3*x*3 filters. An important contribution from this paper only uses of 3*x*3 filters in the entire Network. The use of small filters significantly reduces the parameters than the large filters. The architecture has a generic configuration and only differ in depth. Network *A* has 11 weight layers(8 Conv, 3 FC layers) and Network *E* has 19 weight layers (16 Conv, 3 FC layers).![](vgg/vgg1.png)
 The advantage of using more small filter is, we can incorporate more non-linear rectification layers instead of one, which makes the decision function more discriminative. Moreover, we can decrease the no of parameters(let us look at one 7*x*7 vs three 3*x*3 filters, assume both i/p and o/p has the same no.of channels(C)). The output of three 3*x*3 filters has 27Csq parameters, and 7*x*7 has 49Csq parameters. 
+
 ```math
 3(3^2C^2)= 27C^2,
 
