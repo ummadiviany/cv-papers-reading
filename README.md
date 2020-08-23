@@ -6,7 +6,7 @@ This is a schedule and brief info about papers I read.
 
 - [x] [Visualizing and Understanding Convolutional Networks](#zfnet)
 
-- [ ] [Very Deep Convolutional Networks for Large-Scale Image Recognition]()
+- [x] [Very Deep Convolutional Networks for Large-Scale Image Recognition](#vgg)
 
 - [ ] [Going deeper with convolutions]()
 
@@ -58,6 +58,22 @@ into its operation, it can also assist with selecting good architectures in the 
 *Figure 3. The architecture of our 8 layer convnet model. A 224 by 224 crop of an image (with 3 color planes) is presented as the input. This is convolved with 96 different 1st layer filters (red), each of size 7 by 7, using a stride of 2 in both x and y. The resulting feature maps are then: (i) passed through a rectified linear function (not shown), (ii) pooled (max within 3*x*3 regions, using stride 2) and (iii) contrast normalized across feature maps to give 96 different 55 by 55 element feature maps. Similar operations are repeated in layers 2,3,4,5. The last two layers are fully connected, taking features from the top convolutional layer as input in vector form (6*x*6*x*256 = 9216 dimensions). The final layer is a C-way softmax function, C being the number of classes. All filters and feature maps are square in shape.*
 
 This architecture beating *AlexNet(single model)* by 1.7%(top-5 error), * best-published performance on this dataset*. The ensemble model achieved 14.8%(top-5 error), while the previous was 15.3%(top-5 error). Analysis of vertical translation, scale, rotation with other occlusion sensitivity is also done. The feature generalization is a great part of this paper. With very less training image, the pre-trained model performed very well on other dataset include Caltech 101/Caltech 256, PASCAL VOC. The necessary changes are done to fit with other datasets. On Caltech-256 with only six training examples per image resulted in the SOTA performance and with 60 training examples, it surpassed the best-reported results. Finally showed how the ImageNet trained model could generalize well to other datasets. For Caltech-101 and Caltech-256, the datasets are similar enough that we can beat the best-reported results, in the latter case by a significant margin. An ablation study on the model revealed that having a minimum depth to the network, rather than any individual section, is vital to the model’s performance.
+
+<div id='vgg'>
+
+### [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556) <img src="https://img.shields.io/badge/Completed-Read%20on%2023--AUG--2020-green">
+
+**Brief:** This is the paper that showed depth is very crucial for peformance. However in the previous papers itself they said increasing the depth will show better performance. Lack of powerful GPUs held increasing depth. Using very small filters we can achieve better performance than large filters used in previous papers. A 5*x*5 kernel has the same receptive field as 2 stacked 3*x*3 filter and a  7*x*7 kernel has the same receptive field as 3 stacked 3*x*3 filters. Important contribution from this paper is only use of 3*x*3 filters in the entire network. The use of small filters significantly reduce the parameters than the large filters. The architecture has a genric configuration and only differ in depth. Network *A* has 11 weight layers(8 conv ,3 fc layers) and Network *E* has 19 weight layers (16 conv, 3 fc layers).![](vgg/vgg1.png)
+The advantage of using more small filter is , we can incorporate more non-linear rectificatoin layers instead of one ,which makes the decision function more discriminative. Moreover we can decrease the no of parameters(lets look at one 7*x*7 vs three 3*x*3 filters, assume both i/p and o/p has same no.of channels(C)). The output of three 3*x*3 filters has 27Csq parameters and 7*x*7 has 49Csq parameters. 
+```math
+3(3^2C^2)= 27C^2,
+
+7^2C^2= 49C^2
+``` 
+
+The ILSVRC-2012 dataset (which was used for ILSVRC 2012–2014 challenges). The dataset includes images of 1000 classes, and is split into three sets: training (1.3M images), validation (50K images), and testing (100K images with held-out class labels).
+Another notable experiment from this research is training at different single-scales  S = 256 and S = 384. For multi-scale, where each training image is individually rescaled by randomly sampling S from a certain range [S_min = 256, S_max = 512]. This is also can be seen as training set augementation by scale jittering, where a single model is trained to recognise objects over a wide range of scales. Authors mentioned way for testing But I am not able to get it perfectly to put it here.This implementation is based on C++ Cafee toolbox but with significant modifications. These networks are trained on 4-NVIDIA Titan Black GPUs that a single net took 2–3 weeks depending on the architecture.While increasing the depth of the network the classifiction error decreases from 11 layers to 19 layers.Scale jittered model-E leads to **top-1 val error 25.5%** and **top-5 val error 8.0%**. In the multi scale evaluation test images of are size Q = {S − 32, S, S + 32} (where S is size of image at training time). The 19 layer model-E produces **top-1 val error 24.8%** and **top-5 val error 7.5%**. We can observe that in multi scale evaluation the error further decreases by a good margin.Model-E(19 layer Net) with multi-crop evaluation and dense convNet produces still better results,   **top-1 val error 24.4%** and **top-5 val error 7.1%**. An ensemble of Model-D(16 layer) and Model-E(19 layer) with multi-scale evaluation + multi-crop + dense produces still better results than all of the above **top-1 val error 23.7%** and **top-5 val error 6.8%**. Remember that this result is ensemble on two modedls and other techniques being previously used. This result is very much close with ILSVRC-2014 winner GoogleNet with **top-5 val error 6.7%**. VGG team got 2nd place in the classififaction task after GoogleNet. Another contribution is vgg publicly released the vgg16 and vgg19 models.
+
 
 
 <div id='resnet'/>
