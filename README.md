@@ -1,7 +1,7 @@
 # cv-papers-reading
 This repository holds the Brief of cv-papers I read. If you want to have a glimpse of the paper, then you can continue reading this readme. I highly recommend reading papers yourself and get a more in-depth understanding. Click on the title of the paper to go to the paper link. All the papers have been uploaded in their respective folders.
 
-- [ ] [Image Classification]()
+- [x] [Image Classification]()
 
     - [x] [ImageNet Classification with Deep Convolutional Neural Networks](#alexnet)
 
@@ -124,6 +124,6 @@ shows compelling accuracy and speed. ![Faster R-CNN is a single, unified network
 
 ## Author
 
-|<a href ="https://github.com/ummadiviany"><img height="128" width="128" src="profile.jpeg" /></a>                                          |
+|<a href ="https://github.com/ummadiviany"><img height="128" width="128" src="profile1.gif" /></a>                                          |
 | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [VINAY UMMADI](https://github.com/ummadiviany)                                                                                                     |
