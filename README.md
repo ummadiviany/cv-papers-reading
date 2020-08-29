@@ -1,33 +1,39 @@
 # cv-papers-reading
 This repository holds the Brief of cv-papers I read. If you want to have a glimpse of the paper, then you can continue reading this readme. I highly recommend reading papers yourself and get a more in-depth understanding. Click on the title of the paper to go to the paper link. All the papers have been uploaded in their respective folders.
 
-- [x] [ImageNet Classification with Deep Convolutional Neural Networks](#alexnet)
+- [ ] [Image Classification]()
 
-- [x] [Visualizing and Understanding Convolutional Networks](#zfnet)
+    - [x] [ImageNet Classification with Deep Convolutional Neural Networks](#alexnet)
 
-- [x] [Very Deep Convolutional Networks for Large-Scale Image Recognition](#vgg)
+    - [x] [Visualizing and Understanding Convolutional Networks](#zfnet)
 
-- [x] [Going deeper with convolutions](#googlenet)
+    - [x] [Very Deep Convolutional Networks for Large-Scale Image Recognition](#vgg)
 
-- [x] [Deep Residual Learning for Image Recognition](#resnet) 
+    - [x] [Going deeper with convolutions](#googlenet)
 
-- [ ] [ Rich feature hierarchies for accurate object detection and semantic segmentation]()
+    - [x] [Deep Residual Learning for Image Recognition](#resnet) 
 
-- [ ] [Fast R-CNN]()
+- [ ] [Object Detection]()
 
-- [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
+    - [x] [OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks](#overfeat)
 
-- [ ] [ You only look once: Unified, real-time object detection]()
+    - [ ] [ Rich feature hierarchies for accurate object detection and semantic segmentation]()
 
-- [ ] [ SSD: Single Shot MultiBox Detector]()
+    - [ ] [Fast R-CNN]()
 
-- [ ] [Fully convolutional networks for semantic segmentation]()
+    - [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
 
-- [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs ]()
+    - [ ] [ You only look once: Unified, real-time object detection]()
 
-- [ ] [ Mask R-CNN]()
+    - [ ] [ SSD: Single Shot MultiBox Detector]()
 
-- [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
+    - [ ] [Fully convolutional networks for semantic segmentation]()
+
+    - [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs ]()
+
+    - [ ] [ Mask R-CNN]()
+
+    - [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
 
 
 
@@ -39,6 +45,14 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 **Brief:** This paper is the kick-off for deep learning, from where all it started. Before this, there is no significant use of deep learning because they did not think it is the power horse for computer vision and other areas. Unavailability of computing power is a major drawback, lagged use of NNs. Because Neural Networks are computational hungry, they need to compute the addition and multiplication billions of times. Unavailability of the large labelled dataset is also the one reasons for slow progression in deep learning. Until the ImageNet(which consists of over 15 million labelled high-resolution images in over 22,000 categories) dataset arrived in, there are only datasets with hundreds and thousands of images. MNIST is the most experimented image dataset till then, and other datasets like CIFAR-10/100 and Caltech-101/256 are also available but are high resolution and realistic. AlexNet is trained on 1.2M images with 1000 categories, a subset of ILSVRC 2010 release. They achieved the top1 error of 37.5% and top5 error of 17%, which is a significant reduction compared to state of the art at that time. They said this research is only possible with current GPUs and we can do better research while waiting for the better GPUs. They used only two NVIDIA GTX 580 3GB GPUs which took five to six days for training. Overfitting is a severe problem in those time due to lack of large datasets, luckily now we never care about overfitting anymore. Four novel or unusual features of this networks architecture are ReLU Nonlinearity, Use of Multiple GPUs, Local Response Normalization, Overlapping pooling. ![ReLU](/alexnet/relu.png)Deep convolutional neural networks with ReLUs train several times faster than their equivalents with tanh or sigmoid units.Fig1 Dotted line is *tanh* and the solid line is *relu*, it is six-time faster than tanh. A single GTX 580 GPU has only 3GB memory which limits the size of the network. They used two GPUs and spread the network across the two GPUs.The parallelization scheme that employed essentially puts half of the kernels (or neurons) on each GPU, with one additional trick: the GPUs communicate only in certain layers. Similar to *Batch Normalization* we do they days they did *Local Response Normalization* which reduces the error over 1%. ![AlexNet Architecture](alexnet/alexnet1.png) This is the overall architecture of the AlexNet; the network contains eight layers with weights; the first five are convolutional and the remaining three fully-connected. The output of the last fully connected layer is fed to a 1000-way softmax produces a distribution over 1000 class labels. Response-normalization layers follow the first and second convolutional layers. Max-pooling layers, follow both response-normalization layers as well as the fifth convolutional layer. The ReLU non-linearity is applied to the output of every convolutional and fully-connected layer. Reducing the overfitting is also crucial for better performance. Data augmentation with image translations, random cropping, horizontal reflections and altering the intensities of RBG channels are done. Dropout is also used to reduce overfitting. Dropout consists of setting to zero the output of each hidden neuron with probability 0.5. The neurons which are *dropped out* do not contribute to forward pass and back-propagation. AlexNet achieved top-1 and top-5 test error rates of **37.5%** and **17.0%**. In the ILSVRC 2012 competition, AlexNet won the 1st place. They said removing any middle layer results in a loss of 2% for top-1 performance of the network. The performance can be increased, simply with deeper networks.![reluts](alexnet/result.png).
 
 (Left) Eight ILSVRC-2010 test images and the five labels considered most probable by the model. The correct label is written under each image, and the probability assigned to the correct label is also shown with a red bar (if it happens to be in the top 5). (Right) Five ILSVRC-2010 test images in the first column. The remaining columns show the six training images that produce feature vectors in the last hidden layer with the smallest Euclidean distance from the feature vector for the test image.
+
+
+<div id='overfeat' />
+
+### [OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks](https://arxiv.org/abs/1312.6229)  <img src="https://img.shields.io/badge/Completed-Read%20on%2029--AUG--2020-green">
+
+**Brief:** **OverFeat** is the first paper that described how they did localization and detection. In the ILSVRC2012 competition, AlexNet won both classification and localization, but they did not mention how they did localization. So, In ILSVRC2013, OverFeat won in both localization and detection tasks and given a competitive performance in classification(won by ZFNet in 2013) task. By now, you are confused about what is the difference between localization and detection. I will explain, take a long breath. **Classification**: Classify the object within the image.**Localization**: Classify the objects and localize the objects by bounding boxes within the image.**Detection**: Like localization, we also need to classify the objects and localize the objects by bounding boxes but can contain small objects. The evaluation metric is different from localization. It also needs to predict the background class when there are no objects. OverFeat used the slightly modified version of AlexNet; they made *fast* and *accurate* models. They only difference is filter sizes in the first and second convolutional layers. The changes from AlexNet are there is no local contrast normalization (LRN) and no overlapping pooling. Larger feature maps at 1st and 2nd layers due to the smaller stride of 2.<img src="overfeat/architecture.png"> **Multi-Scale Classification** is used to increase the accuracy at inference. The entire image is used in six different scales. At test time, FC layers become 1*x*1 conv layers. The whole image is going into the network, and obtain a class map just like VGGNet.AlexNet obtains 18.2% Top-5 error rate.With **7 fast models + 4 scales + fine stride max-pooling**, the error rate has been greatly reduced to **13.86%**. With **7 accurate models + 4 scales + fine stride max-pooling**, the error rate has been greatly reduced to **13.24%**. We have already seen that different ensembling models will have a significant performance boost. **Fine Stride Pooling** is another technique used after the convolutional layer-5, and I do not want to go into the messy details of that. There is a regression network after the 5th Conv layer, 2 FC layers (4096,1024) and last layer with 4 x C(Classes) are used to predict bounding box coordinates.**Single-class regression (SCR)** and 4 scales achieves **29.9% error rate** in test set and won the **localization** task in **ILSVRC 2013**. For detection, the main difference is the evaluation metric and predicts a background class when there is no object. **OverFeat** also got **24.3% mAP** (mean average prediction) for detection task.Below are some examples of detection. Another technique called **greedy merge algorithm** is used to get the final bounding box.  <img src="overfeat/detection1.png">
+
 
 
 <div id='zfnet' />
@@ -78,8 +92,8 @@ Another notable experiment from this research is training at different single-sc
 <div id='googlenet'>
 
 ### [Going Deeper with Convolutions](https://arxiv.org/abs/1409.4842) <img src="https://img.shields.io/badge/Completed-Read%20on%2027--AUG--2020-green">
-**Brief:** **GoogLeNet** is the winner of **ILSVRC2014** image  classification challange. It showed significant improvement from the previous AlexNet(Winner ILSVRC2012) , ZFNet(Winner ILSVRC2013) and little less error from the VGGNet(runner up in ILSVRC2014 classification chanllage).<img src="googlenet/ilsvrc2014.png"> 
-This network is quite different from AlexNet, ZFNet, VGGNet . It has 1*x*1 convolutions in the midlle of the network and Global Average Pooling at the end of the network instead of fully connected layers.These techniques are presented in another paper *Netwwork In Network*. The inception moodule is having different sizes of convolutions for the same input and concatenating all ouputs. Inception word is taken from the famous internet meme *We Need to Go Deeper* <img src="googlenet/deeper.jpg"> . In GoogleNet the use of 1*x*1 convolution is used as dimension reduction module to reduce the compution and also to introduce the non linearty. The use of 1*x*1 convolution before 3*x*3 and 5*x*5 convolution significantly reduces the Number of operations.<img src="googlenet/inception.png"> Inception module having 1*x*1 , 3*x*3 , 5*x*5, Max pooling layer with 1*x*1 convlution layer and concatenated at the output. Previously Fully Connected(FC) layer are used at the end of the network , All inputs are connected to each output.In GoogLeNet , global average pooling is used at the end of the network by averaging each feature map, this significantly reduces the parameters and increases top-1 accuracy by 0.6%.<img src="googlenet/architechture.png"> There are 22-layers in total this is deep model compared to AlexNet,ZFNet. There are several inception modules staacked togetther to go deeper. As we can see there are some intermediate softmax branches in the middle that are used only for training. These branches contain Average pooling , Conv , FC , Softmax layers. The loss is added with total loss with weight of 0.3. 7 GoogleNet ensembled for predictoion.This boosting approach is also used in previous models. Multi-scale testing is used just like VGGNet, with shorter dimension of 256, 288, 320, 352. (4 scales)Multi-scale testing is used just like VGGNet, with shorter dimension of 256, 288, 320, 352. (4 scales).Multi-crop testing is used, same idea but a bit different from and more complicated than AlexNet. A total of (4 scales×3 squares×6 crops×2 versions=144 crops/image)144 crops per image are taken.With 7 models + 144 crops, the **top-5 error is 6.67%**.From this, we can observe that, besides the network design, the other stuffs like ensemble methods, multi-scale and multi-crop approaches are also essential to reduce the error rate!!! .<img src="googlenet/ilsvrc2014_table.png"> Finally, GoogLeNet outperforms other previous deep learning networks, and won in ILSVRC 2014.
+**Brief:** **GoogLeNet** is the winner of **ILSVRC2014** image  classification challenge. It showed significant improvement from the previous AlexNet(Winner ILSVRC2012), ZFNet(Winner ILSVRC2013) and little less error from the VGGNet(runner up in ILSVRC2014 classification challenge).<img src="googlenet/ilsvrc2014.png"> 
+This network is quite different from AlexNet, ZFNet, VGGNet. It has 1*x*1 convolutions in the middle of the network and Global Average Pooling at the end of the network instead of fully connected layers. These techniques are presented in another paper *Network In Network*. The inception module is having different sizes of convolutions for the same input and concatenating all outputs. Inception word is taken from the famous internet meme *We Need to Go Deeper* <img src="googlenet/deeper.jpg">. In GoogleNet, the use of 1*x*1 convolution is used as a dimension reduction module to reduce the computation and introduce the non-linearty. The use of 1*x*1 convolution before 3*x*3 and 5*x*5 convolution significantly reduces the number of operations.<img src="googlenet/inception.png"> Inception module having 1*x*1, 3*x*3, 5*x*5, Max pooling layer with 1*x*1 convolution layer and concatenated at the output. Previously Fully Connected(FC) layer is used at the end of the network; All inputs are connected to each output. In GoogLeNet, global average pooling is used at the end of the network by averaging each feature map; this significantly reduces the parameters and increases top-1 accuracy by 0.6%.<img src="googlenet/architechture.png"> There are 22-layers in total this is deep model compared to AlexNet, ZFNet. There are several inception modules stacked together to go deeper. As we can see, there are some intermediate softmax branches in the middle that are used only for training. These branches contain Average pooling, Conv, FC, Softmax layers. The loss is added with the total loss with a weight of 0.3. 7 GoogleNet ensembled for prediction.This boosting approach is also used in previous models. Multi-scale testing is used just like VGGNet, with a shorter dimension of 256, 288, 320, 352. (4 scales)Multi-scale testing is used just like VGGNet.Multi-crop testing is used, the same idea but a bit different from and more complicated than AlexNet. A total of (4 scales×3 squares×6 crops×2 versions=144 crops/image)144 crops per image are taken.With 7 models + 144 crops, the **top-5 error is 6.67%**.From this, we can observe that, besides the network design, the other kinds of stuff like ensemble methods, multi-scale and multi-crop approaches are also essential to reduce the error rate. .<img src="googlenet/ilsvrc2014_table.png"> Finally, GoogLeNet outperforms other previous deep learning networks, and won in ILSVRC 2014.
 
 <div id='resnet'/>
 
