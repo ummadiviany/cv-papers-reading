@@ -13,6 +13,12 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     - [x] [Deep Residual Learning for Image Recognition](#resnet) 
 
+    - [ ] [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications]()
+
+    - [ ] [Xception: Deep Learning with Depthwise Separable Convolutions]()
+
+    - [ ] [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks]()
+
 - [ ] [Object Detection]()
 
     - [x] [OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks](#overfeat)
@@ -21,19 +27,47 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     - [x] [Fast R-CNN](#frcnn)
 
-    - [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
+    - [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn)
+
+    - [ ] [ Mask R-CNN]() 
 
     - [ ] [ You only look once: Unified, real-time object detection]()
 
     - [ ] [ SSD: Single Shot MultiBox Detector]()
 
+    - [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
+
+    - [ ] [Focal Loss for Dense Object Detection]()
+
+    - [ ] [Aggregated Residual Transformations for Deep Neural Networks]()
+
+    - [ ] [Dual Path Networks]()
+
+    - [ ] [CornerNet: Detecting Objects as Paired Keypoints]()
+
+    - [ ] [CenterNet: Keypoint Triplets for Object Detection]()
+
+    - [ ] [Objects as Points]()
+
+    - [ ] [Training-Time-Friendly Network for Real-Time Object Detection]()
+
+    - [ ] [EfficientDet: Scalable and Efficient Object Detection]()
+
+    - [ ] [DetectoRS: Detecting Objects with Recursive Feature Pyramid and Switchable Atrous Convolution]()
+
+
+- [ ] [Semantic & Instace Segmentation + Pose Estimation]()
+
+    - [ ] [ Mask R-CNN]()
+
     - [ ] [Fully convolutional networks for semantic segmentation]()
 
     - [ ] [Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs ]()
 
-    - [ ] [ Mask R-CNN]()
+    - [ ] [Stacked Hourglass Networks for Human Pose Estimation]()
 
-    - [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
+
+    
 
 
 
