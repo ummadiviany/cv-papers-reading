@@ -19,7 +19,7 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     - [x] [ Rich feature hierarchies for accurate object detection and semantic segmentation R-CNN](#rcnn)
 
-    - [ ] [Fast R-CNN]()
+    - [x] [Fast R-CNN](#frcnn)
 
     - [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn) 
 
@@ -105,7 +105,27 @@ on a large auxiliary dataset (ILSVRC), followed by domain-specific fine-tuning o
 <img src='rcnn/voc2010.png'> The method with R-CNN BB achieved best perofrmance of **53.7%** mAP on PASVAL VOC 2010 test set. The same method achieves **31.4%** mAP on ILSVRC 2013 detection test set.This super increase in mAP compared to previous best method OverFeat.
 <img src='rcnn/ilsvrc2013.png'>.With Fine Tuning + Bounding Box regresson on the same model achieved  **58.5% mAP on PASCAL VOC 2007** test set. After using the VGG16 as the pretraained model + Bounding Box regression it achived **66% mAP on VOC 2007 test set**.This method uses different split stratagies of availale labled data from val, test, train.Training data is required for three procedures in R-CNN:(1) CNN fine-tuning, (2) detector SVM training, and (3)bounding-box regressor training. CNN fine-tuning was run for 50k SGD iteration on val 1 +train N using the exact same settings as were used for PASCAL. Fine-tuning on a single NVIDIA Tesla K20 took 13 hours using Caffe. There is an interesting relationship between R-CNN and OverFeat: OverFeat can be seen (roughly) as a special case of R-CNN. If one were to replace selective search region proposals with a multi-scale pyramid of regular square regions and change the per-class bounding-box regressors to a single bounding-box regressor, then the systems would be very similar (modulo some potentially significant differences in how they are trained: CNN detection fine-tuning,using SVMs, etc.). R-CNN achieves **mAP of 31.4% on ILSVRC 2013 detection set**. Semantic segementation is also performed with same model with some modifications. This method achieved **47.9% Segmaentaion mean accuracy**, It is a 4.2%  over existing O2P(second-order pooling) best method.
 
+<div id='frcnn'/>
 
+### [Fast R-CNN](https://arxiv.org/abs/1504.08083)
+**Brief:**  This paper made the R-CNN work faster in simple words.Fast R-CNN proposes a single stage training algorithm that jointly learns to classify object proposels and refine their locations. It is an imporvement of R-CNN and SPPNet . R-CNN has following drawbacks Training is multistage pipeline, expensensiive in space and time, object detection is slow(47s per image with VGG16).R-CNN is slow becase it performs a convnet forarward pass through each object proposal, without sharing computation.SPPnet computes a conv feature map for entire image and classifies each object proposal form the feature vector extracted form the shared feature map.Features are extracted for a proposal by max-pooling the portion of the feature map into a fixed sized output, Multiple output sizes are concatenated into a Spatial Pyramid Pooling.SPPnet accelerates R-CNN by 10 to 100× at test time. Training time is also reduced by 3× due to faster proposal feature extraction.We call this method Fast R-CNN because it’s comparatively fast to train and test.Fast R-CNN method has serveral advatages 
+
+1. Higher detection quality (mAP) than R-CNN, SPPnet 
+2. Training is single-stage, using a multi-task loss 
+3. Training can update all network layers 4)No disk storage is required for feature caching.
+
+<img src="fastrcnn/fastrcnn.png">
+A Fast R-CNN network takes input an entire image and set of object proposals(from selective search "quality mode"), the network first processes whole image with several conv and max-pool layers to produce feature maps. Then each object proposal with Region of Intrest(RoI) pooling layer extracts fixed length feature vector from the feature map. Each feature vector is fed into  sequence of fully connected layers : one produces K+1 softmax class probalilities and another with 4 values(r, c, h, w) repesenting a bounding box.
+<img src="fastrcnn/fastrcnn1.png">
+RoI projects and RoI pooling are most important parts of the paper after that we will get a fixed size(7*x*7) feature ouput.Fast R-CNN has a **Multi-task loss** to handle both clssification and bounding box regression. Back Propagation is also possible through RoI layers.
+<img src="fastrcnn/loss.png">
+In Image classificatio time taken for computing FC layers is less compared to Conv layers, But for Detection it is quite opposite.Large FC layers are easily accelrated by Truncated SVD. Truncated SVD significantly reduces the computations in FC layers. Three main results from this paper are :
+
+1. SOTA mAP on VOC07,2010 and 2012, 
+2. Fast training and testing compared to R-CNN and SPPNet, 
+3. Fine Tuning conv layers in VGG-16 improves mAP.
+
+Tests have been conducted with three models S(AlexNet),M(AlexNet but Wider), L(VGG16). Fast R-CNN achieves a top result on **VOC12 with a mAP of 65.7% (68.4% with extra data)**. On VOC10 Fast R-CNN with data from **VOC07(trainval) + VOC07(test) + VOC12(trainval) achieves a mAP of 68.8%** surpassing segDeepM. On **VOC07 Fast R-CNN achieves mAP of 66.9%** , **training without diffuclt marked examples gives mAP of 68.1%** and with **VOC07(trainval) + VOC12(trainval) achieves mAP of 70%**. The main improvement form R-CNN is not mAP but the inferenece speed. Fast R-CNN took 0.32s/img without truncated SVD and 0.22s/img with truncated SVD while R-CNN took 47s/img and SPPNet took 2.3s/img. Truncated SVD reduces forward pass timing from 320ms/img(mAP 66.9%) to 223ms/img(mAP 66.6%). For MS-COCO dataset Fast R-CNN achieves **PASCAL-style mAP is 35.9%** and new COCO-style AP, which also averages over IoU thresholds, is **19.7%**.
 <div id='resnet'/>
 
 ### [Deep Residual Learning for Image Recognition](https://scholar.google.co.in/scholar?oi=bibs&cluster=9281510746729853742&btnI=1&hl=en) <img src="https://img.shields.io/badge/Completed-Read%20on%2016--AUG--2020-green">
