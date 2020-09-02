@@ -107,7 +107,8 @@ on a large auxiliary dataset (ILSVRC), followed by domain-specific fine-tuning o
 
 <div id='frcnn'/>
 
-### [Fast R-CNN](https://arxiv.org/abs/1504.08083)
+### [Fast R-CNN](https://arxiv.org/abs/1504.08083) <img src="https://img.shields.io/badge/Completed-Read%20on%2002--SEP--2020-green">
+
 **Brief:**  This paper made the R-CNN work faster in simple words.Fast R-CNN proposes a single stage training algorithm that jointly learns to classify object proposels and refine their locations. It is an imporvement of R-CNN and SPPNet . R-CNN has following drawbacks Training is multistage pipeline, expensensiive in space and time, object detection is slow(47s per image with VGG16).R-CNN is slow becase it performs a convnet forarward pass through each object proposal, without sharing computation.SPPnet computes a conv feature map for entire image and classifies each object proposal form the feature vector extracted form the shared feature map.Features are extracted for a proposal by max-pooling the portion of the feature map into a fixed sized output, Multiple output sizes are concatenated into a Spatial Pyramid Pooling.SPPnet accelerates R-CNN by 10 to 100× at test time. Training time is also reduced by 3× due to faster proposal feature extraction.We call this method Fast R-CNN because it’s comparatively fast to train and test.Fast R-CNN method has serveral advatages 
 
 1. Higher detection quality (mAP) than R-CNN, SPPnet 
