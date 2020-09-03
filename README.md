@@ -1,7 +1,7 @@
 # cv-papers-reading
 This repository holds the Brief of cv-papers I read. If you want to have a glimpse of the paper, then you can continue reading this readme. I highly recommend reading papers yourself and get a more in-depth understanding. Click on the title of the paper to go to the paper link. All the papers have been uploaded in their respective folders.
 
-- [x] [Image Classification]()
+- [ ] [Image Classification]()
 
     - [x] [ImageNet Classification with Deep Convolutional Neural Networks](#alexnet)
 
@@ -29,9 +29,7 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     - [x] [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](#fasterrcnn)
 
-    - [ ] [ Mask R-CNN]() 
-
-    - [ ] [ You only look once: Unified, real-time object detection]()
+    - [x] [ You only look once: Unified, real-time object detection](#yolov1)
 
     - [ ] [ SSD: Single Shot MultiBox Detector]()
 
@@ -186,6 +184,17 @@ shows compelling accuracy and speed. ![Faster R-CNN is a single, unified network
 ‘attention’ of this unified network](/fasterrcnn/frcnn.png). In the Faster R-CNN object detection system, there are two modules. The first module is a deep, fully convolutional network that proposes regions, and the second module is the Fast R-CNN detector that uses the proposed regions. The entire system is a single unified network for object detection. A RPN takes an image as input and outputs a set of rectangular object proposals, each with an objectness score. These object proposals are called as *Anchors*. ![Region Proposal Network (RPN)](fasterrcnn/rpn.png). To generate region proposals, we slide a small network over the convolutional feature map output by the last shared convolutional layer. This small network takes input as n *x* n spatial window of the input convolutional feature map, each sliding window will map to a lower-dimensional feature. This will be used by two fully connected layers --a box-regression layer and a box-classification layer. The maximum number of possible proposals for each location is *k*. The *reg* layer has *4k* outputs encoding the coordinates of *k* boxes. The *cls* layer outputs *2k* scores that estimate the probability of object or not object for each proposal. An important property of this approach is that it is *translation-invariant* , both in terms of the anchors and the function that compute proposals relative to the anchors. If one translates an object in an image, the proposal should translate, and the same function should be able to predict the proposal in either location. The loss function is a combination of *cls* and *reg*. We assign a positive label if the anchor overlap with the ground-truth box or anchor has an Intersection-over-Union (IoU) higher than 0.7 with any ground truth box. A negative label is assigned if it has IoU lower than 0.3 for all ground-truth boxes. ![Loss Function](fasterrcnn/loss.png). Faster R-CNN has been implemented on PASCAL VOC with *ZFNet* and *VGGNets*. This is very successful in generating high mAP on different combination networks. For the VGG-16 model, this detection system has a frame rate of 5fps on a GPU while SOTA object detection accuracy on PASCAL VOC 2007,2012 and MS COCO datasets with only 300 proposals per image. In ILSVRC and COCO 2015 competitions, Faster R-CNN and RPN are the foundations of the 1st-place winning entries in several tracks.
 
 
+<div id='yolov1'/>
+
+### [You Only Look Once: Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640) <img src="https://img.shields.io/badge/Completed-Read%20on%2003--SEP--2020-green">
+
+**Brief :** Here comes the fastest object detection algorithm **Y**ou **O**nly **L**ook **O**nce - **YOLO**.It is not only fastest but also *Unified* and gives *Real-Time Object Detection*. Previous methods use ConvNets to classify region propsals and perform detection. In YOLO detection is performed as regression problem to spatially seperated bounding boxes and associated class probabilities. A single neaural network predicts and classifies images in one go. Deformable Parts Model(DPM) , OverFeat uses sliding window approach and R-CNN , Fast R-CNN uses Selective Search(SS) to get region proposals and apply ConvNet on the proposed image. Only Faster R-CNN(Region Prroposal Network) is end-to-end network that can be trained with back-propagation and achieveing the top accuracy on PASCAL VOC and MS COCO datasets. 
+<img src="yolov1/yolo.png">
+YOLO(24 layer) is extremly fast and runs at **45fps** and Fast YOLO(Only nine layers) runs at more than **150fps**.YOLO reasons globally while making predictions. YOLO unifies several object detection components into a single network. It divides a Image into S*x*S(7*x*7) grid cells and these cells are responsible for detecting the object.Each grid celll predicts *B* bounding boxes((2 is used)) with cooridnates(*x, y, w, h*) and confidence.
+<img src="yolov1/yolo1.png">
+The final output of the network *7 × 7 × (2 ∗ 5 + 20)*(*S × S × (B ∗ 5 + C)*). The Network is similar to GoogLeNet with 24 Conv layers and 2 FC layers, and instead of Inception modules here 1*x*1 reduction layers followed by 3*x*3 conv layers.Fast YOLO has only 9 conv layers instead on 24 and fewer filters in those layers.
+<img src="yolov1/architecture.png"> 
+The training is done at 224*x*224 and at testing resoultion is increased to 448*x*448.Network trained with 20-conv layers+avg pool+fc layer on ImageNet for 1-week and achievd top-5 accuracy of **88%**.All height and widht is normalized between 0 and 1. **Leaky-Relu** is used in all layers except final layer(linear).Loss Function is desinged in such a way that it optimizing bounding boxes and class probabilities.Non-maximal suppression is used to fix these multiple detections.YOLO struggles with small objects that appear in groups, such as flocks of birds as it imposes strong spatial constraints on bounding box predictions since each grid cell only predicts two boxes and can only have one class.The main source of errors in YOLO is incorrect localizations. YOLO only proposes(98) fewer bounding boxes than R-CNN (~2000 from SS). Fast R-CNN and Faster R-CNN offer speed and accuracy improvements but still fall short of real-time performance. But only 30Hz DPM runs in real-time(30 fps) but with lower 26.1% mAP. YOLO fine tuned on VOC07+12 achieves **45fps with a 63.4% mAP**and Fast YOLO achieves **155fps with a 52.7% mAP**. Combing YOLO and Fast R-CNN have significant boost to performance with **75% mAP on VOC07 test set** and **70.7% mAP on VOC12 test set**. YOLO has genralization ability to perform detections in artwork datasets like People-Art ,Picasso Datset while other methods mAP reduces significantly on these datsets.
 
 
 ## Author
