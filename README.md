@@ -93,14 +93,29 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     
 - [ ] [Popular in Medical Domain]()
+
     - [ ] [V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation - 2016]()
 
 
 - [ ] [Attetntion and Transformers]()
+
     - [ ] [Attention Is All You Need - 2017]()
+
     - [ ] [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale - 2020]()
+
     - [ ] [MLP-Mixer: An all-MLP Architecture for Vision - 2021]()
+
+    - [ ] [Emerging Properties in Self-Supervised Vision Transformers - 2021]()
+
+    - [ ] [PVTv2: Improved Baselines with Pyramid Vision Transformer - 2021]()
+
+    - [ ] [VATT: Transformers for Multimodal Self-Supervised Learning from Raw Video, Audio and Text - 2021]()
+
+    - [ ] [Swin Transformer: Hierarchical Vision Transformer using Shifted Windows- 2021]()
+
     - [ ] [Patches Are All You Need? - 2022]()
+
+    - [ ] [SepViT: Separable Vision Transformer - 2022]()
 
 
 
