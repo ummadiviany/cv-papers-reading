@@ -13,11 +13,37 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     - [x] [Deep Residual Learning for Image Recognition](#resnet) 
 
-    - [ ] [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications]()
+    - [ ] [Highway Networks- 2015]()
+
+    - [ ] [Densely Connected Convolutional Networks - 2016]()
+
+    - [ ] [Aggregated Residual Transformations for Deep Neural Networks - 2016]()
+
+    - [ ] [Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning - 2016]()
+
+    - [ ] [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size - 2016]()
+
+    - [ ] [Wide Residual Networks - 2016]()
+
+    - [ ] [Deep Networks with Stochastic Depth - 2016]()
 
     - [ ] [Xception: Deep Learning with Depthwise Separable Convolutions]()
 
-    - [ ] [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks]()
+    - [ ] [Learning Transferable Architectures for Scalable Image Recognition - 2017]()
+
+    - [ ] [ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices - 2017]()
+
+    - [ ] [Squeeze-and-Excitation Networks - 2017]()
+
+    - [ ] [Regularized Evolution for Image Classifier Architecture Search - 2018]()
+
+    - [ ] [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications - 2017]()
+
+    - [ ] [Xception: Deep Learning with Depthwise Separable Convolutions]()
+
+    - [ ] [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks - 2019]()
+
+    - [ ] [ResNeSt: Split-Attention Networks - 2020]()
 
 - [ ] [Object Detection]()
 
@@ -31,11 +57,11 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
     - [x] [ You only look once: Unified, real-time object detection](#yolov1)
 
-    - [x] [ SSD: Single Shot MultiBox Detector](#ssd)
+    - [x] [ SSD: Single Shot MultiBox Detector - 2015](#ssd)
 
     - [ ] [R-FCN: Object Detection via Region-based Fully Convolutional Networks]()
 
-    - [ ] [Focal Loss for Dense Object Detection]()
+    - [ ] [Focal Loss for Dense Object Detection - 2017]()
 
     - [ ] [Aggregated Residual Transformations for Deep Neural Networks]()
 
@@ -66,7 +92,15 @@ This repository holds the Brief of cv-papers I read. If you want to have a glimp
 
 
     
+- [ ] [Popular in Medical Domain]()
+    - [ ] [V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation - 2016]()
 
+
+- [ ] [Attetntion and Transformers]()
+    - [ ] [Attention Is All You Need - 2017]()
+    - [ ] [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale - 2020]()
+    - [ ] [MLP-Mixer: An all-MLP Architecture for Vision - 2021]()
+    - [ ] [Patches Are All You Need? - 2022]()
 
 
 
